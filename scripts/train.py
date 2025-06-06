@@ -8,6 +8,7 @@ from data.data import get_mnist_dataloaders
 from models.mnist_model import MNISTCNN
 
 
+
 train_loader, test_loader = get_mnist_dataloaders()
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -28,3 +29,4 @@ for epoch in range(1, 6):  # 5 epochs
         running_loss += loss.item()
 
     print(f"Epoch {epoch}, Loss: {running_loss/len(train_loader):.4f}")
+torch.save(model.state_dict(), 'outputs/checkpoints/mnist_cnn.pth')

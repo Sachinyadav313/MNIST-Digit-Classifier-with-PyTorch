@@ -1,6 +1,15 @@
+import sys
+import os
+
+# Add the project root directory to sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import torch
 from data.data import get_mnist_dataloaders
 from models.mnist_model import MNISTCNN
+
+
+
 
 train_loader, test_loader = get_mnist_dataloaders()
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
